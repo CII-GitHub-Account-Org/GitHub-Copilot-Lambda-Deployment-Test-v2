@@ -21,12 +21,12 @@ jobs:
       with:
         node-version: 18
 
-    - name: Deploy to AWS Lambda
+    - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-region: us-east-1
         role-to-assume: arn:aws:iam::750344256621:role/CII-GitHub-Account-IAM-Role
-        role-duration-seconds: 1200
-        role-session-name: GitHubActions
-        mask-aws-account-id: true
+        role-duration-seconds: 900 # the ttl of the session, in seconds.
+        aws-region: us-east-1 # use your region here.
+
+    - name: Deploy to AWS Lambda
       run: npx serverless deploy
