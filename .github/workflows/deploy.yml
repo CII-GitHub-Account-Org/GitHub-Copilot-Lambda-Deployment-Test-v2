@@ -1,0 +1,32 @@
+name: Deploy to AWS Lambda
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+      id-token: write
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18
+
+    - name: Deploy to AWS Lambda
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: us-east-1
+        role-to-assume: arn:aws:iam::750344256621:role/CII-GitHub-Account-IAM-Role
+        role-duration-seconds: 1200
+        role-session-name: GitHubActions
+        mask-aws-account-id: true
+      run: npx serverless deploy

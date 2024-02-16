@@ -1,0 +1,12 @@
+service: github-copilot-lambda-deployment-test
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+
+functions:
+  hello:
+    handler: src/handler.hello
