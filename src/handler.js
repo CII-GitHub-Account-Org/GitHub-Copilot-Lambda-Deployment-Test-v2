@@ -1,4 +1,4 @@
-exports.handler = async (event, context) => {
+exports.handler.hello = async (event, context) => {
     // TODO: implement your lambda function logic here
     return {
         statusCode: 200,

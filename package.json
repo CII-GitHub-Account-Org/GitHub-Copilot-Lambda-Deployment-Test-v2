@@ -4,10 +4,14 @@
   "description": "A Node.js application for deploying AWS Lambda function",
   "main": "src/handler.js",
   "scripts": {
+    "test": "jest",
     "deploy": "serverless deploy"
   },
   "dependencies": {
-    "serverless": "^2.66.2",
-    "aws-sdk": "^2.103.0"
+    "aws-sdk": "^2.938.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "serverless": "^2.48.0"
   }
 }
